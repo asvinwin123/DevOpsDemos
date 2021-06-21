@@ -59,9 +59,9 @@ In *part-01* we create Docker image on ansible server through Jenkins job and pu
 1. check images in Docker hub. Now you could able to see new images pushed to Valaxy Docker_Hub
 
 #### Troubleshooting:
-1. Docker should be installed on ansible server 
+1. Docker should be installed on ansible server and ansible host
 1. Should login to "docker hub" on ansible server
-1. ansadmin user should be part of `docker` group
+1. ansadmin user should be part of `docker` group in both ansible server and ansible host
 
 In *Part-02* we create *create_docker_container.yml* playbook. this get intiated by jenkins job, run by ansible and exected on dokcer_host
 
