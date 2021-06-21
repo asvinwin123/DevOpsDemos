@@ -16,7 +16,22 @@ passwd dockeradmin
 usermod -aG docker dockeradmin
 ```
 
-4. Write a Docker file under /opt/docker
+4. Enable password based athentication to allow jenkins to access docker host
+```sh
+cd /etc/ssh/sshd_config
+
+uncomment the following,
+PasswordAuthentication yes
+
+comment the following,
+PasswordAuthentication no
+
+save the file
+
+service sshd resatrt
+```
+
+5. Write a Docker file under /opt/docker
 
 ```sh
 mkdir /opt/docker
@@ -32,10 +47,10 @@ MAINTAINER "valaxytech"
 COPY ./webapp.war /usr/local/tomcat/webapps
 ```
 
-5. Login to Jenkins console and add Docker server to execute commands from Jenkins  
+6. Login to Jenkins console and add Docker server to execute commands from Jenkins  
 Manage Jenkins --> Configure system -->  Publish over SSH --> add Docker server and credentials
 
-6. Create Jenkins job 
+7. Create Jenkins job 
 
 A) Source Code Management  
  Repository : https://github.com/ValaxyTech/hello-world.git  
@@ -63,13 +78,13 @@ D) send files or execute commands over SSH
   Name: `docker_host`  
   Exec command	: `docker run -d --name valaxy_demo -p 8090:8080 valaxy_demo`  
 
-7. Login to Docker host and check images and containers. (no images and containers)
+8. Login to Docker host and check images and containers. (no images and containers)
 
-8. Execute Jenkins job
+9. Execute Jenkins job
 
-9. check images and containers again on Docker host. This time an image and container get creates through Jenkins job
+10. check images and containers again on Docker host. This time an image and container get creates through Jenkins job
 
-10. Access web application from browser which is running on container
+11. Access web application from browser which is running on container
 ```
 <docker_host_Public_IP>:8090
 ```
