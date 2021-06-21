@@ -28,7 +28,7 @@ PasswordAuthentication no
 
 save the file
 
-service sshd resatrt
+service sshd restart
 ```
 
 5. Write a Docker file under /opt/docker
